@@ -6,8 +6,8 @@ This is a early, early, early, early release, expect broken things.
 
 Miguel Barajas A.K.A. GnuOwned <migbarajas@gmail.com>
 
-CONFIGURACION PROCCESS
-======================
+CONFIGURACION PROCESS
+----------------------
 
 0. Make sure you have Dropbox Python SDK go to https://www.dropbox.com/developers/core/sdks/python for help
 1. Add a new APP to you account:
