@@ -130,8 +130,23 @@ def downloadFile (filelist, path):
 		except:
 			print 'An Error occcurs when try do download the Remote File'
 
+# Function to Copy a file
+def copyFile(args):
+	try:
+		client.file_copy(args[0], args[1])
+	except:
+		print 'An error occurs when try do copy the file'
+
+# Function to Move a file
+def moveFile(args):
+	try:
+		client.file_move(args[0], args[1])
+	except:
+		print 'An error occurs when try do copy the file'
+
+
 # Let parse the command line arguments
-argparser =argparse.ArgumentParser()
+argparser = argparse.ArgumentParser()
 
 argparser.add_argument("-a", "--account", help ="Show linked account", action = "store_true" )
 argparser.add_argument("-l", "--list", help = "List de Directory content", action = "store_true")
@@ -139,8 +154,9 @@ argparser.add_argument("-p", "--path", help = "Path of the Directory", default =
 argparser.add_argument("-u", "--upload", help = "List of Files to upload to Dropbox", default = '', nargs = '*')
 argparser.add_argument("-e", "--erase", help = "List of Files to delete from Dropbox", default = '', nargs = '*')
 argparser.add_argument("-d", "--download", help = "List of Files to download from Dropbox", default = '', nargs = '*')
-argparser.add_argument("-c", "--conffile", help = "List of Files to download from Dropbox", default = 'DropUploader.conf', )
-
+argparser.add_argument("-C", "--conffile", help = "Configuration File", default = 'DropUploader.conf', )
+argparser.add_argument("-c", "--copy", help = "Copy a File to a new Location", default = '', nargs = '*')
+argparser.add_argument("-m", "--move", help = "Move a File to a new Location", default = '', nargs = '*')
 
 
 args = argparser.parse_args()
@@ -159,4 +175,7 @@ if args.erase != '':
 	deleteFile(args.erase, args.path)
 if args.download != '':
 	downloadFile(args.download, args.path)
-
+if args.copy != '':
+	copyFile(args.copy)
+if args.move != '':
+	moveFile(args.move)
